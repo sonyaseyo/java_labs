@@ -14,7 +14,7 @@ public class StringCalcTest {
     }
     @Test
         void one_number() {
-            assertEquals(new StringCalculator().add("10"), 10);
+            assertEquals(new StringCalculator().add("100"), 100);
     }
     @Test
         void two_numbers() {
@@ -52,6 +52,34 @@ public class StringCalcTest {
     }
     @Test
     void custom_any_length_any_count_delimiter() {
-        assertEquals(new StringCalculator().add("//[**][%%]\n1**2%%3"), 6);
+        assertEquals(new StringCalculator().add("//[***][**][33]\n1***2**2331"), 6);
+    }
+    @Test
+    void slash_meta_symb_delimiter() {
+        assertEquals(new StringCalculator().add("//[\\]\n1\\2\\2\\1"), 6);
+    }
+    @Test
+    void circumflex_meta_symb_delimiter() {
+        assertEquals(new StringCalculator().add("//[^]\n1^2^2^1"), 6);
+    }
+    @Test
+    void dollar_meta_symb_delimiter() {
+        assertEquals(new StringCalculator().add("//[$]\n1$2$2$1"), 6);
+    }
+    @Test
+    void dot_meta_symb_delimiter() {
+        assertEquals(new StringCalculator().add("//[.]\n1.2.2.1"), 6);
+    }
+    @Test
+    void plus_meta_symb_delimiter() {
+        assertEquals(new StringCalculator().add("//[+]\n1+2+2+1"), 6);
+    }
+    @Test
+    void question_mark_meta_symb_delimiter() {
+        assertEquals(new StringCalculator().add("//[?]\n1?2?2?1"), 6);
+    }
+    @Test
+    void braces_meta_symb_delimiter() {
+        assertEquals(new StringCalculator().add("//[(][)][|][{][}]\n1)2(2|1{2}2"), 10);
     }
 }

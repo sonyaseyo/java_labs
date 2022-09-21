@@ -20,9 +20,10 @@ class ArithmeticException_ext extends ArithmeticException {
 public class  StringCalculator {
 
     private String star_esc(String input) {
+        String meta_symbols = "*\\^$.?+()|{}";
         StringBuilder out = new StringBuilder();
         for (String s : input.split("")) {
-            if (s.equals("*")) {
+            if (meta_symbols.contains(s)) {
                 out.append("\\");
             }
             out.append(s);
