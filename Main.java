@@ -1,19 +1,10 @@
-import java.util.*;
+import java.lang.reflect.InvocationTargetException;
 
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("String Calculator. Chumak Sofiia KM-12.");
-        System.out.println("Enter your string: ");
-        String input = scanner.nextLine();
-        try {
-        Integer output = new StringCalculator().add(input.translateEscapes());
-        System.out.println("Summary is " + output);
-        }
-        catch (ArithmeticException_ext e) {
-            System.err.println(e.getMessage() + ' ' + e.negatives);
-        }
-
+    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        System.out.println("Matrix. Chumak Sofiia, KM-12.");
+        MatrixMenu menu = new MatrixMenu();
+        menu.go();
     }
 }
