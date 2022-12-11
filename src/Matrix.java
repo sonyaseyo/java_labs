@@ -30,15 +30,15 @@ public class Matrix {
             matrix[i] = m.matrix[i].clone();
     }
 
-    public void setCell(int x, int y, int value) {
+    public void setCell(int x, int y, int value) throws Exception {
         matrix[x][y] = value;
     }
 
-    public void setRow(int row_number, int[] row, int size) {
+    public void setRow(int row_number, int[] row, int size) throws Exception {
         if (size >= 0) System.arraycopy(row, 0, matrix[row_number], 0, Math.min(size, width));
     }
 
-    public void setColumn(int col_number, int[] column, int size) {
+    public void setColumn(int col_number, int[] column, int size) throws Exception {
         for(int i = 0; i < Math.min(size, height); i++)
             matrix[i][col_number] = column[i];
     }
@@ -72,24 +72,14 @@ public class Matrix {
 
     @Override
     public int hashCode() {
-        int result = height;
+        Integer result = height;
         result = 31 * result + width;
         result = 31 * result + Arrays.deepHashCode(matrix);
         return result;
     }
 
-    class immutableMatrix extends Matrix{
-        public void setCell(int x, int y, int value) {
-        }
 
-        public void setRow(int row_number, int[] row, int size) {
-        }
-
-        public void setColumn(int col_number, int[] column, int size) {
-        }
-    }
-
-    public Matrix unitMatrix(int s) {
+    public static Matrix unitMatrix(int s) {
         Matrix unit_matrix = new Matrix(s,s);
         for (int i = 0; i < s; i++) {
                     unit_matrix.matrix[i][i] = 1;
@@ -97,11 +87,11 @@ public class Matrix {
         return unit_matrix;
     }
 
-    public Matrix sum_matrix(Matrix matrix_1, Matrix matrix_2) {
+    public static Matrix sum_matrix(Matrix matrix_1, Matrix matrix_2) {
         if (matrix_1.width == matrix_2.width && matrix_1.height == matrix_2.height) {
             Matrix summary_matrix = new Matrix(matrix_1.height, matrix_1.width);
-            for (int i = 0; i < matrix_1.width; i++) {
-                for (int j = 0; j < matrix_1.height; j++) {
+            for (int i = 0; i < matrix_1.height; i++) {
+                for (int j = 0; j < matrix_1.width; j++) {
                     summary_matrix.matrix[i][j] = matrix_1.matrix[i][j] + matrix_2.matrix[i][j];
                 }
             }
@@ -113,10 +103,10 @@ public class Matrix {
 
     }
 
-    public Matrix multiplyByNum(int number, Matrix matrix) {
+    public static Matrix multiplyByNum(int number, Matrix matrix) {
         Matrix new_matrix = new Matrix(matrix.height, matrix.width);
-        for (int i = 0; i < matrix.width; i++) {
-            for(int j = 0; j < matrix.height; j++) {
+        for (int i = 0; i < matrix.height; i++) {
+            for(int j = 0; j < matrix.width; j++) {
                 new_matrix.matrix[i][j] = matrix.matrix[i][j] * number;
             }
         }
