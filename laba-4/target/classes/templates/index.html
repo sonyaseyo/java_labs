@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Лабораторна-4, Чумак С.І., КМ-12</title>
+
+        <script language="javascript" type="text/javascript">
+            function doReload(lang){
+                document.location = '/?lang=' + lang;
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                let newValue = "[[${lang}]]";
+                let elem = document.getElementById('lang');
+                elem.value = newValue;
+
+                let go = document.getElementById('go');
+                go.value = "[[${result}]]";
+            });
+
+        </script>
+
+    </head>
+    <body>
+
+        <form class="generated-form"  method="GET" action="/solve"  target="_self">
+            <fieldset>
+
+                <legend> [[${lines}]] </legend>
+
+                
+                (x +
+                <input type="text" id="text_x1" name="x1" value="1">) /
+                <input type="text" id="text_l1" name="l1" value="1"> =
+
+                
+                (y +
+                <input type="text" id="text_y1" name="y1" value="1">) /
+                <input type="text" id="text_m1" name="m1" value="1"> =
+
+                (z +
+                <input type="text" id="text_z1" name="z1" value="1">) /
+                <input type="text" id="text_n1" name="n1" value="1"><br>
+
+                <br>
+                
+                (x +
+                <input type="text" id="text_x2" name="x2" value="1">) /
+                <input type="text" id="text_l2" name="l2" value="1"> =
+
+                
+                (y +
+                <input type="text" id="text_y2" name="y2" value="1">) /
+                <input type="text" id="text_m2" name="m2" value="1"> =
+
+                (z +
+                <input type="text" id="text_z2" name="z2" value="1">) /
+                <input type="text" id="text_n2" name="n2" value="1"> <br>
+                
+                <br>
+
+                <label for="lang">[[${lang_choice}]] : </label><br>
+                <select id="lang" name="lang" onChange="doReload(this.value);">
+
+                    <option value="en" >[[${lang_en}]]</option>
+                    <option value="uk" >[[${lang_uk}]]</option>
+
+                </select> <br><br>
+
+                <input type="submit" value="Go" id="go"><br><br>
+            </fieldset>
+        </form>
+
+    </body>
+</html>
